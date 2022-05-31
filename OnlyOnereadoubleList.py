@@ -1,6 +1,6 @@
 class SecureList:
     def __init__(self, lst):
-        self.lst = lst
+        self.lst = lst[:]
 
     def __getitem__(self, item):
         if len(self.lst) > 0:
@@ -9,7 +9,7 @@ class SecureList:
             return self.lst[item]
 
     def __repr__(self):
-        test = self.lst
+        test = self.lst[:]
         while len(self.lst) != 0:
             self.lst.pop()
         return f"{test}"
