@@ -1,15 +1,33 @@
+#time limit trouble
+
 def same_factRev(nMax):
-    while nMax != 1088:
+    list_max = []
+    while nMax != 10898:
         if str(nMax) != str(nMax)[::-1]:
-            rang = 19
-            for i in range(2, rang+1):
-                if nMax % i == 0:
-                    print(i)
-                if int(str(nMax)[::-1]) % i == 0:
-                    print(i)
+            a, b, i, j = nMax, int(str(nMax)[::-1]), 2, 2
+            set_one = set()
+            set_two = set()
+            while a != 1:
+                if a % i == 0:
+                    a = a / i
+                    set_one.add(i)
+                    i = 2
+                else:
+                    i += 1
+            while b != 1:
+                if b % j == 0:
+                    b = b / j
+                    set_two.add(j)
+                    j = 2
+                else:
+                    j += 1
+            if set_one == set_two:
+                list_max.append(nMax)
+            set_two = set()
+            set_one = set()
         nMax -= 1
-    return nMax
+    print(set_two, set_one)
+    return sorted(list_max)
 
 
-exclusion = ['palindrom', len('1'), 0 < 1000]
-print(same_factRev(1089))
+print(same_factRev(10989))
